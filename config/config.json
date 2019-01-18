@@ -1,0 +1,20 @@
+{
+  "mysql": {
+    "Host": "58.87.64.219:3306",
+    "Password": "hhb199159",
+    "User": "root",
+    "Db": "blog",
+    "Charset": "utf8",
+    "MaxIdle": 2,
+    "MaxCon": 27,
+    "Show": true,
+    "Level": 1
+  },
+  "redis": {
+    "Host": "127.0.0.1:6379",
+    "Password": "",
+    "MaxIdle": 30,
+    "MaxActive": 30,
+    "IdleTimeOut": 50
+  }
+}
