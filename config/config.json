@@ -1,6 +1,6 @@
 {
   "mysql": {
-    "Host": "58.87.64.219:3306",
+    "Host": "127.0.0.1:3306",
     "Password": "hhb199159",
     "User": "root",
     "Db": "blog",
