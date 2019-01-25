@@ -8,13 +8,24 @@ service UserService {
     }
     rpc Login (UserParams) returns (Response) {
     }
+
+    rpc Auth (AuthUser) returns (Response) {
+
+    }
 }
 
-//创建用户参数结构体
+//创建和登录用户参数结构体
 message UserParams {
     string name = 1; //用户名
     string pwd = 2; //密码
     string groupId = 3; //来自哪个组(来源)
+}
+
+
+message AuthUser {
+    string uid = 1;
+    string token = 2;
+
 }
 
 //用户信息

@@ -36,11 +36,14 @@ var (
 	EngRds *redis.Client
 )
 
+/**
+每个服务里面必须调用这个函数
+*/
 func InitConfig(path string) {
 	config := Config{}
 	Load(path, &config)
 	config.loadDb()
-	config.loadRedis()
+	//config.loadRedis()
 	//config.loadMgo()
 }
 
