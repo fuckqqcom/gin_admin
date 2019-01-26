@@ -1,0 +1,11 @@
+# Unignore all with extensions
+!*.*
+!**/Dockerfile
+
+# Unignore all dirs
+!*/
+
+.idea
+.vscode
+**/.DS_Store
+**/logs
