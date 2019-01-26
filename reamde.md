@@ -14,10 +14,37 @@ Api---gin(路由)—对应的函数-->微服务
 
 微服务”user:
 		用户
+		    Uid string //用户id
+		    Account string //账号
+		    Phone string //手机号码
+		    Addr string //地址
+		    Email string //邮箱
+		    IsValid int //是否禁用 -1表示禁用 1表示正常使用
+		    IsDel int //是否删除 //逻辑删除 -1表示删除 1表示正常用户
+
+
 		角色
+		    Name string //角色名称
+		    RoleId string //角色id
+		    IsValid int //是否禁用 -1表示禁用 1表示正常使用
+            IsDel int //是否删除 //逻辑删除 -1表示删除 1表示正常
+
 		权限
+		    Pid string //权限id
+		    Method string
+		    Url string //url
+		    这里只是针对api还是针对所有的包括目录什么的
+		    ParentId string // 0表示父id,非0表示子id
+		    IsValid int //是否禁用 -1表示禁用 1表示正常使用
+            IsDel int //是否删除 //逻辑删除 -1表示删除 1表示正常
 		组
+            Name string //组名称
+            GroupId string //组id
+            IsValid int //是否禁用 -1表示禁用 1表示正常使用
+            IsDel int //是否删除 //逻辑删除 -1表示删除 1表示正常
+
 	就是组->用户->角色->权限这样的流程
+
 
 然后在gin中做一个middleware,通过角色统一做api鉴权等
 
