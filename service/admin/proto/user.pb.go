@@ -4,16 +4,15 @@
 package user
 
 import (
-	fmt "fmt"
-	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	math "math"
+	"fmt"
+	"github.com/golang/protobuf/proto"
+	"math"
 )
 
 import (
-	client "github.com/micro/go-micro/client"
-	server "github.com/micro/go-micro/server"
-	context "golang.org/x/net/context"
+	"github.com/micro/go-micro/client"
+	"github.com/micro/go-micro/server"
+	"golang.org/x/net/context"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -85,17 +84,17 @@ func (m *UserParams) GetGroupId() string {
 
 //用户信息
 type User struct {
-	Uid                  string               `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
-	Name                 string               `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Email                string               `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	Pwd                  string               `protobuf:"bytes,4,opt,name=pwd,proto3" json:"pwd,omitempty"`
-	Phone                string               `protobuf:"bytes,5,opt,name=phone,proto3" json:"phone,omitempty"`
-	Img                  string               `protobuf:"bytes,8,opt,name=img,proto3" json:"img,omitempty"`
-	CreateTime           *timestamp.Timestamp `protobuf:"bytes,6,opt,name=createTime,proto3" json:"createTime,omitempty"`
-	UpdateTime           *timestamp.Timestamp `protobuf:"bytes,7,opt,name=updateTime,proto3" json:"updateTime,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	Uid                  string    `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Name                 string    `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Email                string    `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	Pwd                  string    `protobuf:"bytes,4,opt,name=pwd,proto3" json:"pwd,omitempty"`
+	Phone                string    `protobuf:"bytes,5,opt,name=phone,proto3" json:"phone,omitempty"`
+	Img                  string    `protobuf:"bytes,8,opt,name=img,proto3" json:"img,omitempty"`
+	CreateTime           time.Time `protobuf:"bytes,6,opt,name=createTime,proto3" json:"createTime,omitempty"`
+	UpdateTime           time.Time `protobuf:"bytes,7,opt,name=updateTime,proto3" json:"updateTime,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
 }
 
 func (m *User) Reset()         { *m = User{} }
@@ -165,14 +164,14 @@ func (m *User) GetImg() string {
 	return ""
 }
 
-func (m *User) GetCreateTime() *timestamp.Timestamp {
+func (m *User) GetCreateTime() *time.Time {
 	if m != nil {
 		return m.CreateTime
 	}
 	return nil
 }
 
-func (m *User) GetUpdateTime() *timestamp.Timestamp {
+func (m *User) GetUpdateTime() *time.Time {
 	if m != nil {
 		return m.UpdateTime
 	}
