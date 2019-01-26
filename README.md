@@ -1,17 +1,28 @@
-api 对外提供挨批服务
-service 内部通信
-pkg 放一些公共的文件,比如加载配置文件,生成和解析token 自定义错误状态码等
-config 放配置文件
+# gin_admin
+
+[![Build Status](https://travis-ci.org/go-sh/gin_admin.svg?branch=master)](https://travis-ci.org/go-sh/gin_admin)
+[![GoDoc](https://godoc.org/github.com/go-sh/gin_admin?status.svg)](https://godoc.org/github.com/go-sh/gin_admin)
+[![Open Source Helpers](https://www.codetriage.com/go-sh/gin_admin/badges/users.svg)](https://www.codetriage.com/go-sh/gin_admin)
 
 
+## 工程目录说明
 
+- `api` 对外提供微服务
+- `service` 内部通信
+- `pkg` 放一些公共的文件,比如加载配置文件,生成和解析token 自定义错误状态码等
+- `config` 放配置文件
 
-技术选型Go-micro  gin  xorm/gorm
-Gin做路由蹭
-Consul做服务注册和发现/etcd也行(后面也可插件)
+## 技术选型
+- `Go-micro` 主要使用的微服务框架
+- `xorm/gorm` 选用 ORM
+- `Gin` 做路由蹭
+- `Consul` 做服务注册和发现, `etcd`也行(后面也可插件)
 
-Api---gin(路由)—对应的函数-->微服务
+## 服务调用流程：
 
+Api---gin(路由) -> 对应 handler -> 对应逻辑层 -> 调用相应微服务接口
+
+## 服务拆分
 微服务”user:
 		用户
 		    Uid string //用户id
