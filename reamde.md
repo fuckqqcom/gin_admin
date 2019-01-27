@@ -12,7 +12,8 @@ Consul做服务注册和发现/etcd也行(后面也可插件)
 
 Api---gin(路由)—对应的函数-->微服务
 
-微服务”user:
+
+    微服务:user:
 		用户
 		    Uid string //用户id
 		    Account string //账号
