@@ -1,32 +1,32 @@
 syntax = "proto3";
 
-service RoleService {
-    rpc AddRole (RoleParams) returns (Response) {
+service PerService {
+    rpc AddPer (PerParams) returns (Response) {
 
     }
 
-    rpc GetRole (PnParams) returns (Response) {
+    rpc GetPer (PnParams) returns (Response) {
 
     }
 
-    rpc DeleteRole (RoleParams) returns (Response) {
+    rpc DeletePer (PerParams) returns (Response) {
 
     }
 
-    rpc UpdateRole (RoleParams) returns (Response) {
-        
+    rpc UpdatePer (PerParams) returns (Response) {
+
     }
 }
 
-message RoleParams {
-    string rid = 3; //这个参数在添加角色的时候可以不做操作,这样就可以公用一个结构体
+message PerParams {
+    string pid = 3; //这个参数在添加角色的时候可以不做操作,这样就可以公用一个结构体
     string name = 1; //角色名称
     string groupId = 2; //属于哪个组的角色
 }
 
-
-message Role {
-    string Rid = 1;
+//这里定义的好好想想，是针对api还是针对所有的东西包括目录
+message Per {
+    string pid = 1;
     string groupId = 2;
     string name = 3;
 
