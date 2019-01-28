@@ -1,15 +1,40 @@
 syntax = "proto3";
 
-import "google/protobuf/timestamp.proto";
+//import "google/protobuf/timestamp.proto";
 
-
+//这里写user的curd 注册登录 认证
+//下面的这个的参数和返回值怎么书写比较优雅合理的问题
+//数据部分demo: groupId:来源  用户信息
 service UserService {
+    //用户注册
     rpc Register (UserParams) returns (Response) {
     }
+
+    //用户登录
     rpc Login (UserParams) returns (Response) {
     }
 
+    //用户认证(有可能单独api需要鉴权访问)
     rpc Auth (AuthUser) returns (Response) {
+
+    }
+    //添加用户
+    rpc AddUser (UserParams) returns (Response) {
+
+    }
+
+    //修改用户信息
+    rpc UpdateUser (UserParams) returns (Response) {
+
+    }
+
+    //删除用户(逻辑删除)
+    rpc DeleteUser (UserParams) returns (Response) {
+
+    }
+
+    //查询用户(可以查询所有，也可以根据分组查询)
+    rpc GetUser (UserParams) returns (Response) {
 
     }
 }
@@ -36,10 +61,11 @@ message User {
     string pwd = 4; //用户密码
     string phone = 5; //用户手机号码
     string img = 8; //用户头像
-    google.protobuf.Timestamp createTime = 6; //创建时间
-    google.protobuf.Timestamp updateTime = 7; //更新时间
+    int64 createTime = 6; //创建时间
+    int64 updateTime = 7; //更新时间
 }
 
+//这里返回值有点问题
 message Response {
     string code = 1;
     string msg = 2;
