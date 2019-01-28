@@ -24,17 +24,17 @@ service UserService {
     }
 
     //修改用户信息
-    rpc UpdateUser (UserParams) returns (Response) {
+    rpc UpdateUser (UpdateParams) returns (Response) {
 
     }
 
     //删除用户(逻辑删除)
-    rpc DeleteUser (UserParams) returns (Response) {
+    rpc DeleteUser (UpdateParams) returns (Response) {
 
     }
 
     //查询用户(可以查询所有，也可以根据分组查询)
-    rpc GetUser (UserParams) returns (Response) {
+    rpc GetUser (GetParams) returns (Response) {
 
     }
 }
@@ -46,6 +46,22 @@ message UserParams {
     string groupId = 3; //来自哪个组(来源)
 }
 
+//修改用户和删除用户
+//其实如果生成uid的时候把groupId包含进去，这时候只需要一个uid即可
+message UpdateParams {
+    string uid = 1;
+    string groupId = 2;
+}
+
+//查询用户 可以根据groupId,账号,手机号码查询
+message GetParams {
+    string uid = 1;
+    string groupId = 2;
+    string account = 3;
+    string phone = 4;
+    int64 ps = 5; //页数
+    int64 pn = 6; //页码
+}
 
 message AuthUser {
     string uid = 1;
@@ -63,8 +79,8 @@ message User {
     string img = 8; //用户头像
     int64 isValid = 9;
     int64 isDel = 10;
-    int64 createTime = 6; //创建时间
-    int64 updateTime = 7; //更新时间
+    int64 create = 6; //创建时间
+    int64 update = 7; //更新时间
 }
 
 //这里返回值有点问题
