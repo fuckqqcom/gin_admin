@@ -1,4 +1,5 @@
 syntax = "proto3";
+import "proto/utils.proto";
 
 //import "google/protobuf/timestamp.proto";
 
@@ -34,7 +35,7 @@ service UserService {
     }
 
     //查询用户(可以查询所有，也可以根据分组查询)
-    rpc GetUser (UserPn) returns (Response) {
+    rpc GetUser (UserPn) returns (UserResponse) {
 
     }
 }
@@ -86,7 +87,9 @@ message User {
 }
 
 //这里返回值有点问题
-message Response {
+
+message UserResponse {
     string code = 1;
     string msg = 2;
+    repeated User user = 7;
 }

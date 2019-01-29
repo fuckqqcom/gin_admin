@@ -1,4 +1,5 @@
 syntax = "proto3";
+import "proto/utils.proto";
 
 service PerService {
     rpc AddPer (PerParams) returns (Response) {
@@ -35,10 +36,10 @@ message Per {
     int64 isValid = 6;
     int64 isDel = 7;
 }
-message Response {
-    string code = 1;
-    string msg = 2;
-}
+//message Response {
+//    string code = 1;
+//    string msg = 2;
+//}
 
 //这里返回结果应该是一个Role类型
 message PerPn {
