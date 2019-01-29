@@ -5,7 +5,7 @@ service PerService {
 
     }
 
-    rpc GetPer (PnParams) returns (Response) {
+    rpc GetPer (PerPn) returns (Response) {
 
     }
 
@@ -41,8 +41,8 @@ message Response {
 }
 
 //这里返回结果应该是一个Role类型
-message PnParams {
+message PerPn {
     int64 pn = 1; //page num
     int64 ps = 2; // page size
-    string params = 3;
+    repeated Per per = 3;
 }
