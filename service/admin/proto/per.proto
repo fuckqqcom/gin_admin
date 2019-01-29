@@ -23,13 +23,18 @@ message PerParams {
     string pid = 3; //这个参数在添加角色的时候可以不做操作,这样就可以公用一个结构体
     string name = 1; //角色名称
     string groupId = 2; //属于哪个组的角色
+
 }
 
 //这里定义的好好想想，是针对api还是针对所有的东西包括目录
+//https://github.com/LyricTian/gin-admin/blob/master/src/schema/s_menu.go
 message Per {
-    string pid = 1;
-    string groupId = 2;
-    string name = 3;
+    string pid = 1; //权限id
+    string groupId = 2; //组id
+    string name = 3; //权限描述
+    int64 sort = 4; //权限编号
+    string flag = 5; //菜单类型(10:系统  20:模块  30:功能  40:资源)
+
 
     int64 create = 4; //创建时间
     int64 update = 5; //更新时间
