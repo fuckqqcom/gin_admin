@@ -1,4 +1,5 @@
 syntax = "proto3";
+package admin;
 import "proto/utils.proto";
 service GroupService {
     rpc AddGroup (GroupParams) returns (Response) {

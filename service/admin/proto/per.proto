@@ -1,6 +1,6 @@
 syntax = "proto3";
 import "proto/utils.proto";
-
+package admin;
 service PerService {
     rpc AddPer (PerParams) returns (Response) {
 

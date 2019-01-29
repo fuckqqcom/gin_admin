@@ -1,6 +1,6 @@
 syntax = "proto3";
 import "proto/utils.proto";
-
+package admin;
 service RoleService {
     rpc AddRole (RoleParams) returns (Response) {
 
