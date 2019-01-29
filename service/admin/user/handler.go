@@ -1,12 +1,15 @@
 package user
 
-import "context"
+import (
+	"context"
+	"gin_admin/service/admin/proto"
+)
 
 type Handler struct {
 	Repo RepositoryUser
 }
 
-func (h *Handler) Register(ctx context.Context, req *UserParams) (resp *Response) {
+func (h *Handler) Register(ctx context.Context, req *admin.UserParams) (resp *admin.Response) {
 	/**
 	注册流程,先验证GroupId是否存在
 		存在则根据规则生成用户id,验证这个uid是否存在,如果存在
@@ -18,7 +21,7 @@ func (h *Handler) Register(ctx context.Context, req *UserParams) (resp *Response
 	return
 }
 
-func (h *Handler) Login(ctx context.Context, req *UserParams) (resp *Response) {
+func (h *Handler) Login(ctx context.Context, req *admin.UserParams) (resp *admin.Response) {
 
 	/**
 	登录流程,先验证GroupId是否合法存在
