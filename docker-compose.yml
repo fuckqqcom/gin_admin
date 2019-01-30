@@ -45,11 +45,11 @@ services:
             - prometheus:prometheus
         volumes:
           - /home/xiaohan/docker/grafana/grafana:/var/lib/grafana
-          - /home/xiaohan/docker/grafana/etc/grafana:/etc/grafana
-          - /home/xiaohan/docker/grafana/log/grafana:/var/log/grafana
+          - /home/xiaohan/docker/grafana/etc/:/etc/grafana
+          - /home/xiaohan/docker/grafana/log/:/var/log/grafana
         environment:
-          - GF_SECURITY_ADMIN_PASSWORD="xiaohan"
-        user: "472"
+          - GF_SECURITY_ADMIN_PASSWORD=xiaohan
+                #- GF_SECURITY_ADMIN_PASSWORD__FILE=/home/xiaohan/docker/grafana/admin_password
         
       
           
