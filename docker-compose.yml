@@ -1,0 +1,57 @@
+version: '3.1'
+
+services:
+    influxsrv:
+        image: influxdb
+        restart: always
+        ports:
+          - "8086:8086"
+        environment:
+          - INFLUXDB_DB=cadvisor3
+  
+    prometheus:
+        image: quay.io/prometheus/prometheus
+        container_name: prometheus
+        hostname: prometheus
+        restart: always
+        volumes:
+            - /home/xiaohan/docker/prometheus:/etc/prometheus/
+          
+        ports:
+            - "9090:9090"
+        
+  
+    cadvisor:
+        image: google/cadvisor
+        container_name: cadvisor
+        command: -storage_driver=influxdb -storage_driver_db=cadvisor3 -storage_driver_host=influxsrv:8086
+        ports:
+          - "8080:8080"
+        volumes:
+          - /:/rootfs:ro
+          - /var/run:/var/run:rw
+          - /sys:/sys:ro
+          - /var/lib/docker/:/var/lib/docker:ro
+          - /dev/disk/:/dev/disk:ro
+    grafana:
+        image: grafana/grafana
+        container_name: grafana
+        hostname: grafana
+        restart: always
+        privileged: true
+        ports:
+            - "3000:3000"
+        links:
+            - prometheus:prometheus
+        volumes:
+          - /home/xiaohan/docker/grafana/grafana:/var/lib/grafana
+          - /home/xiaohan/docker/grafana/etc/grafana:/etc/grafana
+          - /home/xiaohan/docker/grafana/log/grafana:/var/log/grafana
+        environment:
+          - GF_SECURITY_ADMIN_PASSWORD="xiaohan"
+        user: "472"
+        
+      
+          
+    #docker run -d -p 9090:9090  -v /home/xiaohan/docker/prometheus:/etc/prometheus/ --name prometheus quay.io/prometheus/prometheus
+    # sudo docker run --volume=/://home/xiaohan/docker/rootfs:ro --volume=/var/run:/var/run:rw  --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --volume=/dev/disk/:/dev/disk:ro --publish=8080:8080 --detach=true --name=cadvisor google/cadvisor:lates
