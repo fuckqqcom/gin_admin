@@ -1,26 +1,70 @@
 syntax = "proto3";
+import "proto/utils.proto";
+package admin;
+//import "google/protobuf/timestamp.proto";
 
-import "google/protobuf/timestamp.proto";
-
-
+//这里写user的curd 注册登录 认证
+//下面的这个的参数和返回值怎么书写比较优雅合理的问题
+//数据部分demo: groupId:来源  用户信息
 service UserService {
+    //用户注册
     rpc Register (UserParams) returns (Response) {
     }
+
+    //用户登录
     rpc Login (UserParams) returns (Response) {
     }
 
+    //用户认证(有可能单独api需要鉴权访问)
     rpc Auth (AuthUser) returns (Response) {
+
+    }
+    //添加用户
+    rpc AddUser (UserParams) returns (Response) {
+
+    }
+
+    //修改用户信息
+    rpc UpdateUser (UpdateParams) returns (Response) {
+
+    }
+
+    //删除用户(逻辑删除)
+    rpc DeleteUser (UpdateParams) returns (Response) {
+
+    }
+
+    //查询用户(可以查询所有，也可以根据分组查询)
+    rpc GetUser (UserPn) returns (UserResponse) {
 
     }
 }
 
 //创建和登录用户参数结构体
 message UserParams {
-    string name = 1; //用户名
+    string account = 1; //用户名
     string pwd = 2; //密码
     string groupId = 3; //来自哪个组(来源)
 }
 
+//修改用户和删除用户
+//其实如果生成uid的时候把groupId包含进去，这时候只需要一个uid即可
+message UpdateParams {
+    string uid = 1;
+    string groupId = 2;
+}
+
+//查询用户 可以根据groupId,账号,手机号码查询
+message UserPn {
+    string uid = 1;
+    string groupId = 2;
+    string account = 3;
+    string phone = 4;
+    repeated User user = 7;
+
+    int64 ps = 5; //页数
+    int64 pn = 6; //页码
+}
 
 message AuthUser {
     string uid = 1;
@@ -31,16 +75,21 @@ message AuthUser {
 //用户信息
 message User {
     string uid = 1; //用户id
-    string name = 2; //用户姓名
+    string account = 2; //用户姓名
     string email = 3; //用户邮箱
     string pwd = 4; //用户密码
     string phone = 5; //用户手机号码
     string img = 8; //用户头像
-    google.protobuf.Timestamp createTime = 6; //创建时间
-    google.protobuf.Timestamp updateTime = 7; //更新时间
+    int64 isValid = 9;
+    int64 isDel = 10;
+    int64 create = 6; //创建时间
+    int64 update = 7; //更新时间
 }
 
-message Response {
+//这里返回值有点问题
+
+message UserResponse {
     string code = 1;
     string msg = 2;
+    repeated User user = 7;
 }
