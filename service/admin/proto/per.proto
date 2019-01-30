@@ -29,17 +29,22 @@ message PerParams {
 //这里定义的好好想想，是针对api还是针对所有的东西包括目录
 //https://github.com/LyricTian/gin-admin/blob/master/src/schema/s_menu.go
 message Per {
-    string pid = 1; //权限id
+    string pid = 1; //菜单id
     string groupId = 2; //组id
-    string name = 3; //权限描述
-    int64 sort = 4; //权限编号
-    string flag = 5; //菜单类型(10:系统  20:模块  30:功能  40:资源)
+    string name = 3; //菜单描述
+    string flag = 4; //菜单类型(10:系统  20:模块  30:功能  40:资源)
+    int64 sort = 5; //菜单排序
+    string url = 6; //访问路径
+    string method = 7; //资源请求方式
+    string levelCode = 8; //分级码 最大为3级
+    string ParentId = 9; //父id 一级菜单父id为0
 
+    int64 create = 10; //创建时间
+    int64 update = 11; //更新时间
+    int64 isValid = 12;
+    int64 isDel = 13;
+    string creator = 14; //创建人
 
-    int64 create = 4; //创建时间
-    int64 update = 5; //更新时间
-    int64 isValid = 6;
-    int64 isDel = 7;
 }
 //message Response {
 //    string code = 1;
