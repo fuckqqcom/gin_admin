@@ -80,8 +80,8 @@ message User {
     string pwd = 4; //用户密码
     string phone = 5; //用户手机号码
     string img = 8; //用户头像
-    int64 isValid = 9;
-    int64 isDel = 10;
+    int64 isValid = 9;//禁用账号，禁用完后在redis里面删除对应的key就可以
+    int64 isDel = 10; //
     int64 create = 6; //创建时间
     int64 update = 7; //更新时间
 }

@@ -38,7 +38,8 @@ message Per {
     string method = 7; //资源请求方式
     string levelCode = 8; //分级码 最大为3级
     string ParentId = 9; //父id 一级菜单父id为0
-
+    string Params = 15; //精确匹配的参数
+    string pattern = 16;//匹配模式 分精确匹配和模糊匹配 模糊匹配只是到uri，精确匹配到参数
     int64 create = 10; //创建时间
     int64 update = 11; //更新时间
     int64 isValid = 12;
