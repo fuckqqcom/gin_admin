@@ -1,0 +1,49 @@
+syntax = "proto3";
+import "proto/utils.proto";
+package admin;
+service RoleService {
+    rpc AddRole (RoleParams) returns (Response) {
+
+    }
+
+    rpc GetRole (RolePn) returns (Response) {
+
+    }
+
+    rpc DeleteRole (RoleParams) returns (Response) {
+
+    }
+
+    rpc UpdateRole (RoleParams) returns (Response) {
+
+    }
+}
+
+message RoleParams {
+    string rid = 3; //这个参数在添加角色的时候可以不做操作,这样就可以公用一个结构体
+    string name = 1; //角色名称
+    string groupId = 2; //属于哪个组的角色
+}
+
+
+message Role {
+    string Rid = 1;
+    string groupId = 2;
+    string name = 3;
+
+    int64 create = 4; //创建时间
+    int64 update = 5; //更新时间
+    int64 isValid = 6;
+    int64 isDel = 7;
+}
+//message Response {
+//    string code = 1;
+//    string msg = 2;
+//}
+
+//这里返回结果应该是一个Role类型
+message RolePn {
+    int64 pn = 1; //page num
+    int64 ps = 2; // page size
+    repeated Role role = 3;
+}
