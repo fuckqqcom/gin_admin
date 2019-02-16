@@ -1,7 +1,0 @@
-syntax = "proto3";
-package admin;
-
-message Response {
-    string code = 1;
-    string msg = 2;
-}
