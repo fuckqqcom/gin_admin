@@ -4,7 +4,6 @@ import (
 	"gin_admin/pkg/engine"
 	"gin_admin/pkg/err"
 	"gin_admin/tools/utils"
-	"github.com/gin-gonic/gin"
 )
 
 type LUser struct {
@@ -13,9 +12,9 @@ type LUser struct {
 	GroupId     string `json:"group_id"  binding:"required"`
 }
 
-func Register(c *gin.Context) {
+func Register(c engine.Gin) {
 	var lu LUser
-	ctx := engine.Gin{c}
+	ctx := engine.G{c}
 	if !utils.CheckError(c.BindJSON(&lu), "Register") {
 		ctx.Send(200, err.Error, "")
 		return
@@ -25,9 +24,9 @@ func Register(c *gin.Context) {
 	*/
 }
 
-func Login(c *gin.Context) {
+func Login(c engine.Gin) {
 	var lu LUser
-	ctx := engine.Gin{c}
+	ctx := engine.G{c}
 	if !utils.CheckError(c.BindJSON(&lu), "Register") {
 		ctx.Send(200, err.Error, "")
 		return
