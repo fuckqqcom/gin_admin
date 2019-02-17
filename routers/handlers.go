@@ -1,8 +1,11 @@
 package routers
 
-import "github.com/gin-gonic/gin"
+import (
+	"gin_admin/pkg/engine"
+	"github.com/gin-gonic/gin"
+)
 
-func userGroupHandler(r *gin.Engine) {
+func userGroupHandler(r engine.GEng) {
 	u := r.Group("user")
 	{
 		u.GET("/ping", ping)
