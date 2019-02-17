@@ -1,0 +1,10 @@
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+.idea
+.vscode
+**/.DS_Store
+**/logs

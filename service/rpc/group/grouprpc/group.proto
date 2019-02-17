@@ -1,11 +1,12 @@
 syntax = "proto3";
-
+package admin;
+import "proto/utils.proto";
 service GroupService {
     rpc AddGroup (GroupParams) returns (Response) {
 
     }
 
-    rpc GetGroup (PnParams) returns (Response) {
+    rpc GetGroup (GroupPn) returns (Response) {
 
     }
 
@@ -34,14 +35,14 @@ message Group {
     int64 isValid = 6;
     int64 isDel = 7;
 }
-message Response {
-    string code = 1;
-    string msg = 2;
-}
+//message Response {
+//    string code = 1;
+//    string msg = 2;
+//}
 
 //这里返回结果应该是一个Role类型
-message PnParams {
+message GroupPn {
     int64 pn = 1; //page num
     int64 ps = 2; // page size
-    string params = 3;
+    repeated Group group = 3;
 }

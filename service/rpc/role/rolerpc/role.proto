@@ -1,11 +1,12 @@
 syntax = "proto3";
-
+import "proto/utils.proto";
+package admin;
 service RoleService {
     rpc AddRole (RoleParams) returns (Response) {
 
     }
 
-    rpc GetRole (PnParams) returns (Response) {
+    rpc GetRole (RolePn) returns (Response) {
 
     }
 
@@ -14,7 +15,7 @@ service RoleService {
     }
 
     rpc UpdateRole (RoleParams) returns (Response) {
-        
+
     }
 }
 
@@ -35,14 +36,14 @@ message Role {
     int64 isValid = 6;
     int64 isDel = 7;
 }
-message Response {
-    string code = 1;
-    string msg = 2;
-}
+//message Response {
+//    string code = 1;
+//    string msg = 2;
+//}
 
 //这里返回结果应该是一个Role类型
-message PnParams {
+message RolePn {
     int64 pn = 1; //page num
     int64 ps = 2; // page size
-    string params = 3;
+    repeated Role role = 3;
 }

@@ -4,6 +4,10 @@
 [![GoDoc](https://godoc.org/github.com/go-sh/gin_admin?status.svg)](https://godoc.org/github.com/go-sh/gin_admin)
 [![Open Source Helpers](https://www.codetriage.com/go-sh/gin_admin/badges/users.svg)](https://www.codetriage.com/go-sh/gin_admin)
 
+## TODO
+
+项目重构（2019.2.17）
+
 
 ## 工程目录说明
 
